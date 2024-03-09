@@ -8,13 +8,26 @@
         </div>
       </RouterLink>
       <div class="flex gap-2 flex-1 justify-end">
-        <i class="fa-solid fa-circle-info hover:text-teal-500 duration-300 cursor-pointer"></i>
+        <i
+          class="fa-solid fa-circle-info hover:text-teal-500 duration-300 cursor-pointer"
+          @click="toggleModal"
+        ></i>
         <i class="fa-solid fa-plus hover:text-teal-500 duration-300 cursor-pointer"></i>
       </div>
+      <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
+        <h1 class="text-black">lorem</h1>
+      </BaseModal>
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import BaseModal from './BaseModal.vue'
+
+const modalActive = ref(null)
+const toggleModal = () => {
+  modalActive.value = !modalActive.value
+}
 </script>
